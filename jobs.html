@@ -1,0 +1,406 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title></title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<script src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />		
+    <style>
+        * {
+  box-sizing: border-box;
+}
+
+
+input[type="text"] {
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+}
+
+.search-wrap {
+  position: relative;
+  display: block;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  margin-left: 0;
+  padding: 0;
+  border: 2px solid black;
+  border-radius: 20px;
+  -moz-transition: all 0.25s ease 0.3s;
+  -o-transition: all 0.25s ease 0.3s;
+  -webkit-transition: all 0.25s ease;
+  -webkit-transition-delay: 0.3s;
+  transition: all 0.25s ease 0.3s;
+}
+.search-wrap:before {
+  top: 90%;
+  left: 90%;
+  width: 16px;
+  height: 2px;
+  background-color: black;
+  border-radius: 1px;
+  -moz-transition: width 0.15s ease 0.55s;
+  -o-transition: width 0.15s ease 0.55s;
+  -webkit-transition: width 0.15s ease;
+  -webkit-transition-delay: 0.55s;
+  transition: width 0.15s ease 0.55s;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -moz-transform-origin: top left;
+  -ms-transform-origin: top left;
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+}
+.search-wrap input {
+  width: 100%;
+  height: 100%;
+  padding: 0 30px 0 15px;
+  font-size: 14px;
+  line-height: 38px;
+  opacity: 0;
+  background-color: transparent;
+  -moz-transition: opacity 0.15s ease;
+  -o-transition: opacity 0.15s ease;
+  -webkit-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+}
+
+.eks {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 20;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.eks:before, .eks:after {
+  right: 5px;
+  height: 2px;
+  width: 2px;
+  border-radius: 1px;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.eks:before {
+  top: 0px;
+  background-color: black;
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -moz-transform-origin: top right;
+  -ms-transform-origin: top right;
+  -webkit-transform-origin: top right;
+  transform-origin: top right;
+  -moz-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+.eks:after {
+  bottom: 0px;
+  background-color: black;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -moz-transform-origin: bottom right;
+  -ms-transform-origin: bottom right;
+  -webkit-transform-origin: bottom right;
+  transform-origin: bottom right;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.search-wrap.open {
+  width: 100%;
+  -moz-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+.search-wrap.open:before {
+  width: 0px;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.search-wrap.open input {
+  opacity: 1;
+  -moz-transition-delay: 0.15s;
+  -o-transition-delay: 0.15s;
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+.search-wrap.open .eks:before, .search-wrap.open .eks:after {
+  width: 15px;
+  right: 12px;
+}
+.search-wrap.open .eks:before {
+  top: 9px;
+  -moz-transition-delay: 0.25s;
+  -o-transition-delay: 0.25s;
+  -webkit-transition-delay: 0.25s;
+  transition-delay: 0.25s;
+}
+.search-wrap.open .eks:after {
+  bottom: 9px;
+  -moz-transition-delay: 0.3s;
+  -o-transition-delay: 0.3s;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+.search-wrap:before, .eks:before, .eks:after {
+  content: "";
+  position: absolute;
+  display: block;
+}
+.search-div{
+  display: -webkit-flex;
+  display: flex;
+  @inlude flex-direction(row);
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  margin: 0;
+  padding: 0;
+
+}
+    </style>
+</head>
+<body>
+<!-- header -->
+	<div class="header">
+			<div class="header-top">
+				<div class="container">
+					<div class="head-left">
+						<ul class="number">
+							<li><span><i class="phone"> </i>+0123 456 789</span></li>
+							<li><a href="mailto:marmikpandya@gmail.com"><i class="mail"> </i>marmikpandya@gmail.com</a></li>	
+								<div class="clearfix"> </div>						
+						</ul>
+					</div>
+					<div class="head-right">
+						<ul>
+							<li><a href="#"><i class="fb"> </i></a></li>
+							<li><a href="#"><i class="twt"> </i></a></li>	
+							<li><a href="#"><i class="ttt"> </i></a></li>	
+							<li><a href="#"><i class="ve"> </i></a></li>	
+							<li><a href="#"><i class="in"> </i></a></li>	
+							<li><a href="#"><i class="dib"> </i></a></li>	
+							<li><a href="#"><i class="fli"> </i></a></li>	
+							<li><a href="#"><i class="rss"> </i></a></li>	
+							<div class="clearfix"> </div>						
+						</ul>
+					</div>
+						<div class="clearfix"> </div>	
+				</div>
+			</div>
+			<div class="header-bottom">
+				<div class="container">
+					<div class="logo">
+						<a href="index.html"><img src="images/logo.png" class="img-responsive" alt=""></a>
+					</div>
+					<div class="head-nav">
+						<span class="menu"> </span>
+							<ul class="cl-effect-3">
+								<li><a href="index.html">Home</a></li>
+								<li><a href=" about.html">About us</a></li>
+								<li><a href=" employeers.html">Employeers </a></li>
+								<li class="active"><a href="jobs.html">Job Seekers </a></li>
+								<li><a href=" blog.html">Blog</a></li>
+								<li><a href=" contact.html">Contact</a></li>
+									<div class="clearfix"> </div>
+									
+							</ul>
+								<!-- script-for-nav -->
+							<script>
+								$( "span.menu" ).click(function() {
+								  $( ".head-nav ul" ).slideToggle(300, function() {
+									// Animation complete.
+								  });
+								});
+							</script>
+						<!-- script-for-nav --> 
+					</div>
+					<div class="header-right1">
+						<li><a href="login.html">Login</a></li>
+						<li><a href="register.html">Sign Up</a></li>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+	</div>
+<!-- header -->
+<!-- 404 -->
+	<div class="recnt">
+		<div class="container">
+			<h6>Recent jobs</h6>
+			<h3>Available jobs for you</h3>
+		<div class="col-md-9 rec-left">
+			<div class="air">
+				<li class="ic-on"><i class="drib"></i></li>
+				<li class="wb-dis"><h4>Web Designer</h4><h5>Full Time</h5></li>
+				<li class="dr-co"><p>Facebook</p></li>
+				<li class="sa-pn"><p><i class="bung"> </i>San Franciso, USA</p></li>
+				<li class="dolla"><p>14000$</p></li>
+				<li class="b-tn"><div class="apply_btn">
+								<form action="register.html">
+									<input type="submit" value="Apply Now">
+								</form>
+							</div></li>
+							<div class="clearfix"></div>
+			</div>
+			<div class="air-1">
+				<li class="ic-on"><i class="cli"></i></li>
+				<li class="wb-dis"><h4>Front End Developer</h4><h5>Full Time</h5></li>
+				<li class="dr-co"><p>LinkedIn</p></li>
+				<li class="sa-pn"><p><i class="bung"> </i>San Franciso, USA</p></li>
+				<li class="dolla"><p>14000$</p></li>
+				<li class="b-tn"><div class="apply_btn">
+								<form action="register.html">
+									<input type="submit" value="Apply Now">
+								</form>
+							</div></li>
+							<div class="clearfix"></div>
+			</div>
+			<div class="air">
+				<li class="ic-on"><i class="facb"></i></li>
+				<li class="wb-dis"><h4>HR Manager</h4><h5>Full Time</h5></li>
+				<li class="dr-co"><p>Pintrest</p></li>
+				<li class="sa-pn"><p><i class="bung"> </i>Mountain View, CA. USA</p></li>
+				<li class="dolla"><p>14000$</p></li>
+				<li class="b-tn"><div class="apply_btn">
+								<form action="register.html">
+									<input type="submit" value="Apply Now">
+								</form>
+							</div></li>
+							<div class="clearfix"></div>
+			</div>
+			<div class="air-1">
+				<li class="ic-on"><i class="intre"></i></li>
+				<li class="wb-dis"><h4>Internship Designer</h4><h5>Part Time</h5></li>
+				<li class="dr-co"><p>Twitter</p></li>
+				<li class="sa-pn"><p><i class="bung"> </i>San Franciso, USA</p></li>
+				<li class="dolla"><p>14000$</p></li>
+				<li class="b-tn"><div class="apply_btn">
+								<form action="register.html">
+									<input type="submit" value="Apply Now">
+								</form>
+							</div></li>
+							<div class="clearfix"></div>
+			</div>
+			<div class="air">
+				<li class="ic-on"><i class="wind"></i></li>
+				<li class="wb-dis"><h4>Sowtware Engineer</h4><h5>Full Time</h5></li>
+				<li class="dr-co"><p>Instagram</p></li>
+				<li class="sa-pn"><p><i class="bung"> </i>Los Angeles, CA. USA</p></li>
+				<li class="dolla"><p>14000$</p></li>
+				<li class="b-tn"><div class="apply_btn">
+								<form action="register.html">
+									<input type="submit" value="Apply Now">
+								</form>
+							</div></li>
+							<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="col-md-3 recent-right">
+			<div class="recent-right-info">
+				<h3>Seeking a job?</h3>
+				<div class="cre_btn">
+								<form action="register.html">
+									<input type="submit" value="Create a Account">
+								</form>
+							</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<!-- 404 -->
+
+<!-- footer-top -->
+<div class="footer-top">
+	<div class="container">
+		<div class="col-md-4 foo-left">
+			<a href="index.html"><img src="images/logo.png" class="img-responsive" alt=""></a>
+			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore. sed diam nonumy eirmod tempor invidunt ut labore. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.</p>
+		</div>
+		<div class="col-md-4 foo-left">
+			<h3>Twitter Update</h3>
+			<h6>ABOUT 9 HOURS</h6>
+			<p>AGOMeet Aldous - a Brave New World for #rails with more cohesion, less coupling and greater dev speed http://t.co/rsekglotzs</p>
+			<h6>ABOUT 1 DAY AGO</h6>
+			<p>Here's a rare Interview with #graphicdesign legend Massimo Vignelli http://t.co/duxnpoh57z http://t.co/kxO3gPBTo7</p>
+		</div>
+		<div class="col-md-4 foo-left">
+			<h3>Useful lnks</h3>
+				<ul>
+					<li class="active"><a href="about.html">About Us</a></li>
+					<li><a href="#">Services </a></li>
+					<li><a href="#">Work </a></li>
+					<li><a href="blog.html">Our Blog</a></li>
+					<li><a href=" #">Customers Testimonials</a></li>
+					<li><a href="#">Affliate</a></li>
+					<li><a href=" contact.html">Contact Us</a></li>
+						<div class="clearfix"> </div>		
+				</ul>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+<!-- footer-top -->
+<!-- footer-bottom -->
+	<div class="footer-bottom">
+		<div class="container">
+			<p>Copyrights © 2015 </a></p>
+		</div>
+	</div>
+<!-- footer-bottom -->
+    <script type="text/javascript">
+    $(document).on('ready', function() {
+
+			var $wrap = $('[js-ui-search]');
+			var $close = $('[js-ui-close]');
+			var $input = $('[js-ui-text]');
+
+			$close.on('click', function() {
+						$wrap.toggleClass('open');
+			});
+
+			$input.on('transitionend webkitTransitionEnd oTransitionEnd', function() {
+						console.log('triggered end animation');
+						if ($wrap.hasClass('open')) {
+									$input.focus();
+						} else {
+									return;
+						}
+			});
+});
+    </script>
+</body>
+</html>
